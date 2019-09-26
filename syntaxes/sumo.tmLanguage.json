@@ -7,13 +7,22 @@
 		},
 		{
 			"include": "#strings"
+		},
+		{
+			"include": "#fields"
 		}
 	],
 	"repository": {
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.sumo",
-				"match": "\\b(if|while|for|return)\\b"
+				"match": "\\b(geo lookup|haversine|hexToDec|if|in|ipv4ToNumber|isBlank|isEmpty|isNull|isNumeric|isPrivateIP|isPublicIP|isValidIP|join|length|limit|logcompare|logreduce|lookup|luhn (credit card validator)|matches|median|merge|now|num|outlier|parseHex|predict|replace|rollingstd|save|sessionize|smooth|sort|substring|timeslice|toLowerCase and toUpperCase|top|total|trace|transaction|transactionize|transpose|urldecode|urlencode|wher)\\b"
+			}]
+		},
+		"fields": {
+			"patterns": [{
+				"name": "",
+				"match": "\\b(_collector|_messageCount|_messageTime|_raw|_receiptTime|_size|_source|_sourceCategory|_sourceHost|_sourceName|_format)\\b"
 			}]
 		},
 		"strings": {
@@ -28,5 +37,5 @@
 			]
 		}
 	},
-	"scopeName": ""
+	"scopeName": "source.sumo"
 }
