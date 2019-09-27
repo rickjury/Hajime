@@ -13,7 +13,7 @@
         "languages": [{
             "id": "sumo",
             "aliases": ["sumo", "sumo"],
-            "extensions": ["sumo"],
+            "extensions": [".sumo"],
             "configuration": "./language-configuration.json"
         }],
         "grammars": [{

@@ -12,7 +12,10 @@
 			"include": "#fields"
 		},
 		{
-			"include": "#comments"
+			"include": "#blockComments"
+		},
+		{
+			"include": "#lineComments"
 		}
 	],
 	"repository": {
@@ -28,11 +31,18 @@
 				"match": "\\b(_collector|_messageCount|_messageTime|_raw|_receiptTime|_size|_source|_sourceCategory|_sourceHost|_sourceName|_format)\\b"
 			}]
 		},
-		"comments": {
-			"patterns": [{
-				"name": "comment.line.double-slash",
-				"match": "\/\/.*|\/\\*.*\\*\/"
-			}]
+		"blockComments": {
+			"name": "comment",
+			"begin": "\/\\*",
+			"end": "\\*\/"
+		},
+		"lineComments": {
+			"patterns": [
+				{
+					"name": "comment.line",
+					"match": "\/\/.*"
+				}
+			]
 		},
 		"strings": {
 			"name": "string.quoted.double.sumo",
