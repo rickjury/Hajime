@@ -1,0 +1,14 @@
+avg
+count
+count_distinct
+count_frequent
+fillmissing
+first
+min
+max
+last
+most_recent
+pct
+least_recent
+stddev
+sum

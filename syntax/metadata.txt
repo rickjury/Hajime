@@ -1,0 +1,11 @@
+_collector
+_messageCount
+_messageTime
+_raw
+_receiptTime
+_size
+_source
+_sourceCategory
+_sourceHost
+_sourceName
+_format
