@@ -12,6 +12,27 @@ export function activate(context: vscode.ExtensionContext) {
 
             // a simple completion item which inserts `Hello World!`
             const simpleCompletion = new vscode.CompletionItem('Hello World!');
+            var aggregating = ['avg', 'count', 'count_distinct', 'count_frequent', 'fillmissing', 'first', 'min', 'max', 'last', 'most_recent', 'pct', 'least_recent', 'stddev', 'sum'];
+            var maths = ['abs', 'acos', 'asin', 'atan', 'atan2', 'cbrt', 'ceil', 'cos', 'cosh', 'exp', 'expm1', 'floor', 'hypot', 'log', 'log10', 'log1p', 'max', 'min', 'round', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'toDegrees', 'toRadians'];
+            var parse = ['csv', 'JSON', 'keyvalue', 'parse', 'parse regex', 'split', 'xml'];
+            var search = ['accum', 'backshift', 'base64Decode', 'base64Encode', 'bin', 'CIDR', 'concat', 'contains', 'decToHex', 'diff', 'fields', 'filter', 'format', 'formatDate', 'geo lookup', 'haversine', 'hexToDec', 'if', 'in', 'ipv4ToNumber', 'isBlank', 'isEmpty', 'isNull', 'isNumeric', 'isPrivateIP', 'isPublicIP', 'isValidIP', 'join', 'length', 'limit', 'logcompare', 'logreduce', 'lookup', 'luhn', 'matches', 'median', 'merge', 'now', 'num', 'outlier', 'parseHex', 'predict', 'replace', 'rollingstd', 'save', 'sessionize', 'smooth', 'sort', 'substring', 'timeslice', 'toUpperCase', 'toLowerCase', 'top', 'total', 'trace', 'transaction', 'transactionize', 'transpose', 'urldecode', 'urlencode', 'where'];
+            var metadata = ['_collector', '_messageCount', '_messageTime', '_raw', '_receiptTime', '_size', '_source', '_sourceCategory', '_sourceHost', '_sourceName', '_format'];
+            var other = ['and', 'or', 'not', 'in', '!', 'nodrop'];
+
+            aggregating = aggregating.concat(maths);
+            aggregating = aggregating.concat(parse);
+            aggregating = aggregating.concat(search);
+            aggregating = aggregating.concat(metadata);
+            aggregating = aggregating.concat(other);
+
+            var completionListItems: any = [new vscode.CompletionItem('Hello World!')];
+
+            function compItems(item: string) {
+                var compItem = new vscode.CompletionItem(item)
+                return compItem
+            }
+
+            aggregating.forEach(item => completionListItems.push(compItems(item)));
 
             // a completion item that inserts its text as snippet,
             // the `insertText`-property is a `SnippetString` which will be
@@ -36,13 +57,15 @@ export function activate(context: vscode.ExtensionContext) {
             commandCompletion.insertText = 'new ';
             commandCompletion.command = { command: 'editor.action.triggerSuggest', title: 'Re-trigger completions...' };
 
-            // return all completion items as array
-            return [
+            var finalItems = [
                 simpleCompletion,
                 snippetCompletion,
                 commitCharacterCompletion,
                 commandCompletion
             ];
+            finalItems = finalItems.concat(completionListItems);
+            // return all completion items as array
+            return finalItems;
         }
     });
 
