@@ -1,0 +1,29 @@
+{
+	"parse_regex": {
+		"prefix": [
+			"parse regex"
+		],
+		"body": [
+			"| parse regex field=${1:a_field} \"(<${2:new_field}>${3:regex})\" ${4|nodrop,//nodrop|}\n"
+		],
+		"description": "create a parse regex capture expression"
+	},
+	"transpose": {
+		"prefix": [
+			"transpose"
+		],
+		"body": [
+			"| timeslice by ${1:1h}\n| count by _timeslice,${2:series}\ntranspose row _timeslice column ${2:series}\n"
+		],
+		"description": "insert count by timeslice, transpose expression for multiple series."
+	},
+	"count_by": {
+		"prefix": [
+			"count"
+		],
+		"body": [
+			"| count by ${1:some_field}\n| sort ${1:some_field} ${2|asc,desc|}\n"
+		],
+		"description": "typical sort | count block."
+	}
+}

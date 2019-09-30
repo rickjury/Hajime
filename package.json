@@ -3,11 +3,13 @@
     "displayName": "hajime",
     "description": "language support and query execution for Sumologic",
     "version": "0.0.1",
+    "publisher": "tba",
     "engines": {
         "vscode": "^1.37.0"
     },
     "categories": [
-        "Programming Languages"
+        "Programming Languages",
+        "Snippets"
     ],
     "main": "./dist/extension.js",
     "activationEvents": [
@@ -25,6 +27,12 @@
                     ".sumo"
                 ],
                 "configuration": "./language-configuration.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "sumo",
+                "path": "./snippets.json"
             }
         ],
         "grammars": [
