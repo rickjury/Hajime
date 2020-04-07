@@ -5,15 +5,16 @@ Hajime is a vscode extension for edting .sumo Sumo Logic query files
 ## Features
 
 The extension provides following features:
-- syntax highlighting
-- auto complete for Sumo Logic meta data and search language
+- syntax highlighting: configured in syntaxes/sumo.tmLanguage.json
+- intellisense to prompt for sumo operators, meta and keywords: src/extension.ts
+- auto complete snippets: snippets.json
 
 ## Extension Development
 For info on setup see: https://code.visualstudio.com/api/get-started/your-first-extension
 
 There is also a useful library of examples here: https://github.com/microsoft/vscode-extension-samples
 
-To run the extension in a debug window use F5 - this opens a new window to test the extension. I think this should run npm compile to create .out/extesntion.js but this doesnt' seem to work. Need to fix this so after changes run npm compile first.
+To run the extension in a debug window use F5 - this opens a new window to test the extension. I think this should run npm compile to create .out/extesntion.js but this doesn't seem to work. Need to fix this so after changes run npm compile first.
 
 then either:
 - open a .sumo file
