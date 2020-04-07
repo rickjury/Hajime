@@ -1,5 +1,5 @@
-_source="single_line__ps" and _collector="portfolio__ps__test"
-subproduct = "lookup-finweb"
+_source="single_line__ps" and _collector="my__test"
+subproduct = "lookup-something"
 | csv _raw extract providerid,providerdisplayname,providerdescription,blank,REGION
 | toLowerCase(providerid) as providerid
 | count by providerid,providerdisplayname,providerdescription,REGION | sort providerdisplayname asc | fields - _count
