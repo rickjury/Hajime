@@ -1,16 +1,24 @@
 # hajime README
 
-This is the README for your extension "hajime". After writing up a brief description, we recommend including the following sections.
+Hajime is a vscode extension for edting .sumo Sumo Logic query files
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+The extension provides following features:
+- syntax highlighting
+- auto complete for Sumo Logic meta data and search language
 
-For example if there is an image subfolder under your extension project workspace:
+## Extension Development
+For info on setup see: https://code.visualstudio.com/api/get-started/your-first-extension
 
-\!\[feature X\]\(images/feature-x.png\)
+There is also a useful library of examples here: https://github.com/microsoft/vscode-extension-samples
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+To run the extension in a debug window use F5 - this opens a new window to test the extension. I think this should run npm compile to create .out/extesntion.js but this doesnt' seem to work. Need to fix this so after changes run npm compile first.
+
+then either:
+- open a .sumo file
+- create a new file and set type to sumo
+
 
 ## Requirements
 
