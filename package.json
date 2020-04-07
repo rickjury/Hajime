@@ -2,7 +2,7 @@
     "name": "hajime",
     "displayName": "hajime",
     "description": "language support and query execution for Sumologic",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "tba",
     "engines": {
         "vscode": "^1.37.0"
@@ -11,7 +11,7 @@
         "Programming Languages",
         "Snippets"
     ],
-    "main": "./dist/extension.js",
+    "main": "./out/extension.js",
     "activationEvents": [
         "*"
     ],
@@ -43,22 +43,16 @@
             }
         ]
     },
-    "scripts": {
-        "vscode:prepublish": "webpack --mode production",
-        "webpack": "webpack --mode development",
-        "webpack-dev": "webpack --mode development --watch",
-        "test-compile": "tsc -p ./"
-    },
-    "devDependencies": {
-        "@types/node": "^10.12.18",
-        "@types/vscode": "^1.32.0",
-        "ts-loader": "^6.1.2",
-        "tslint": "^5.16.0",
-        "typescript": "^3.6.3",
-        "webpack": "^4.41.0",
-        "webpack-cli": "^3.3.9"
-    },
-    "dependencies": {
-        "vscode": "^1.1.36"
-    }
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "tslint -p ./",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/node": "^10.12.18",
+		"tslint": "^5.16.0",
+		"typescript": "^3.5.1",
+		"@types/vscode": "^1.32.0"
+	}
 }
