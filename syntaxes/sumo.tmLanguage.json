@@ -19,6 +19,9 @@
 		},
 		{
 			"include": "#fields"
+		},
+		{
+			"include": "#math"
 		}
 	],
 	"repository": {
@@ -37,7 +40,12 @@
 		"operators": {
 			"patterns": [{
 				"name": "keyword.sumo",
-				"match": "\\b(?i)(name|and|or|not|in)\\b"
+				"match": "\\b(?i)(name|and|or|not|in|as|by)\\b"
+		}]},
+		"math": {
+			"patterns": [{
+				"name": "keyword.sumo",
+				"match": "[!=<>+%\\*-]"
 			}]
 		},
 		"blockComments": {
