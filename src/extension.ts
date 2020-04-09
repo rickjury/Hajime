@@ -24,14 +24,29 @@ export function activate(context: vscode.ExtensionContext) {
             aggregating = aggregating.concat(search);
             aggregating = aggregating.concat(metadata);
             aggregating = aggregating.concat(other);
+            
+            // default word based completion does not work anymore, lets hack and append words
+            // this code sitll needs work - it actually suggests the current word as autocomplete!
+            const fullText = document.getText();
+            var wordCompletion = fullText.match(/[a-zA-Z_0-9]{3,}/g);
+            if (wordCompletion){
+                var words = wordCompletion.join(' ');
+                var wordsArray = words.split(' ');
+                aggregating = aggregating.concat(wordsArray);
+                
+            };
+
+            aggregating = aggregating.sort().filter(function(item, pos, ary) {
+                return !pos || item != ary[pos - 1];
+            })
 
             var completionListItems: any = [new vscode.CompletionItem('Hello World!')];
-
+            
             function compItems(item: string) {
                 var compItem = new vscode.CompletionItem(item)
                 return compItem
             }
-
+            
             aggregating.forEach(item => completionListItems.push(compItems(item)));
 
             // a completion item that inserts its text as snippet,
