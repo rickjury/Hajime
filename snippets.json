@@ -25,5 +25,33 @@
 			"| count by ${1:some_field}\n| sort ${1:some_field} ${2|asc,desc|}\n"
 		],
 		"description": "typical sort | count block."
+	},
+	"lookup_asn": {
+		"prefix": [
+			"lookup asn"
+		],
+		"body": [
+			"| lookup [asn, organization] from asn://default on ip = ${1:my_ip_field}\n"
+		],
+		"description": "Lookup ASN operator.\nhttps://help.sumologic.com/05Search/Search-Query-Language/Search-Operators/ASN_Lookup"
+	},
+	"lookup_geolook": {
+		"prefix": [
+			"lookup geo"
+		],
+		"body": [
+			"| lookup latitude, longitude, country_code, country_name, region, city, postal_code from geo://location on ip = ${1:my_ip_field}\n"
+		],
+		"description": "Geo Lookup.\nhttps://help.sumologic.com/05Search/Search-Query-Language/Search-Operators/Geo-Lookup"
+	},
+	"transactionize_merge": {
+		"prefix": [
+			"transactionize merge"
+		],
+		"body": [
+			"| transactionize ${1:id} (merge ${1:id} takeFirst, _raw join with \" \")}\n"
+		],
+		"description": "The Merge operator reduces a stream of events to a single event using a specified merge strategy. It is particularly useful as a subquery for the Transactionize operator. Each field can have a different merge strategy:\ntakeFirst - summarize the field using the earliest value\ntakeLast - summarize the field using the latest value\njoin with separator - reduce the field by combining all values into a single string with the specified separator between each value. If no separator is specified a new line is used.\nhttps://help.sumologic.com/05Search/Search-Query-Language/Transaction-Analytics/Merge-Operator"
 	}
 }
+
