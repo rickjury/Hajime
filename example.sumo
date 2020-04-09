@@ -1,5 +1,16 @@
-_source="single_line__ps" and _collector="my__test"
-subproduct = "lookup-something"
-| csv _raw extract providerid,providerdisplayname,providerdescription,blank,REGION
-| toLowerCase(providerid) as providerid
-| count by providerid,providerdisplayname,providerdescription,REGION | sort providerdisplayname asc | fields - _count
+_sourceCategory = Labs/AWS/VPC 
+| json "message"
+| parse field=message "* * * * * * * * * * * * * *" as version,accountID,interfaceID,src_ip,dest_ip,src_port,dest_port,Protocol,Packets,bytes,StartSample,EndSample,Action,status
+| where action="ACCEPT"
+| lookup type, actor, raw , threatlevel as malicious_confidence,threat   from sumo://threat/cs on src_ip=threat
+| where type="ip_address" and   malicious_confidence ="high"
+| json field=raw "malware_families[*]" as threat_malware_families
+| json field=raw "last_updated" as last_updated
+| formatDate(fromseconds(last_updated), "MM-dd-yyyy") as threat_last_updated 
+| json field=raw "labels[*].name" as label_name 
+| replace(label_name, "\\/","->") as label_name
+| replace(label_name, "\""," ") as label_name
+| concat ( src_ip," : ", src_port) as src
+| concat ( dest_ip," : ", dest_port) as dest
+| count by interfaceID, accountID, src, dest, Protocol, malicious_confidence, label_name,  threat_malware_families,threat_last_updated
+| sort by _count
