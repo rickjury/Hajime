@@ -40,7 +40,7 @@
 		"operators": {
 			"patterns": [{
 				"name": "keyword.sumo",
-				"match": "\\b(?i)(name|and|or|not|in|as|by)\\b"
+				"match": "\\b(?i)(name|and|or|not|in|as|by|from|on)\\b"
 		}]},
 		"math": {
 			"patterns": [{
@@ -57,7 +57,7 @@
 			"patterns": [
 				{
 					"name": "comment.line",
-					"match": "\/\/.*"
+					"match": "[^:]\/\/.*"
 				}
 			]
 		},
