@@ -50,14 +50,18 @@
 		},
 		"blockComments": {
 			"name": "comment",
-			"begin": "\/\\*",
+			"begin": "^\\s*\/\\*",
 			"end": "\\*\/"
 		},
 		"lineComments": {
 			"patterns": [
 				{
 					"name": "comment.line",
-					"match": "[^:]\/\/.*"
+					"match": "[^:]\/\/.*$"
+				},
+				{
+					"name": "comment.newline",
+					"match": "^\/\/.*$"
 				}
 			]
 		},
